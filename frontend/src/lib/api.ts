@@ -1,7 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 const env = import.meta.env as Record<string, string | undefined>;
-const rawApi = env.VITE_API_URL ;
+const rawApi = env.VITE_API_URL;
 let resolvedBase = '/api';
 if (rawApi) {
   console.log(rawApi)

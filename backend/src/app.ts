@@ -5,7 +5,9 @@ import config from './config/env';
 import authRoutes from './routes/auth.routes';
 import leadRoutes from './routes/lead.routes';
 import userRoutes from './routes/user.routes';
+import { DBConnection } from './libs/db';
 import { errorHandler, notFound } from './middlewares/errorHandler';
+import { asyncHandler } from './utils/asyncHandler';
 
 const app = express();
 
@@ -30,6 +32,15 @@ if (config.nodeEnv !== 'test') {
 app.get('/api/health', (_req, res) => {
   res.json({ success: true, message: 'Smart Leads API is running', env: config.nodeEnv });
 });
+
+// Establish a cached Mongo connection before serving database-backed routes.
+app.use(
+  '/api',
+  asyncHandler(async (_req, _res, next) => {
+    await DBConnection();
+    next();
+  })
+);
 
 // API Routes
 app.use('/api/auth', authRoutes);
