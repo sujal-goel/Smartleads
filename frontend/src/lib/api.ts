@@ -4,6 +4,7 @@ const env = import.meta.env as Record<string, string | undefined>;
 const rawApi = env.VITE_API_URL ;
 let resolvedBase = '/api';
 if (rawApi) {
+  console.log(rawApi)
   const r = rawApi.replace(/\/+$/u, '');
   resolvedBase = r.endsWith('/api') ? r : `${r}/api`;
 }
