@@ -2,17 +2,18 @@
   "name": "smart-leads-backend",
   "version": "1.0.0",
   "description": "Smart Leads Dashboard Backend API",
-  "main": "dist/server.js",
+  "main": "src/server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node src/server.ts",
     "lint": "eslint src --ext .ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",
+    "eslint": "^10.4.0",
     "express": "^4.22.2",
     "express-validator": "^7.3.2",
     "jsonwebtoken": "^9.0.3",
